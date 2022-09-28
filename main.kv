@@ -1,0 +1,62 @@
+BoxLayout:
+    orientation:"vertical"
+
+    PageLayout:
+        id:air_pages
+        size_hint:1, 2
+        Button:
+        Button:
+        Button:
+
+    BoxLayout:
+        id:message_box
+        size_hint:1, 1.5
+    BoxLayout:
+        id:Lullaby
+        spacing:0.5
+        size_hint:1, 0.5
+        Button:
+            text:"play\npause"
+        Button:
+            text:"stop"
+        Button:
+            text:"replay"
+        Button:
+            text:"next"
+        Button:
+            text:"back"
+        Button:
+            text:"load"
+        Button:
+            text:"auto\nplay"
+    BoxLayout:
+        size_hint:1, 0.5
+        Image:
+            size_hint:0.2, 1
+        Slider:
+        Image:
+            size_hint:0.2, 1
+        Slider:
+
+    BoxLayout:
+        id:cradle
+        size_hint:1, 1
+        Button:
+            id:rock
+            text:"CRADLE"
+        Button:
+            id:stop
+            text:"STOP"
+
+    BoxLayout:
+        id:cradle_auto
+        size_hint:1, 0.5
+        Button:
+            text:"Auto Start"
+        Button:
+            text:"Auto Stop"
+
+    BoxLayout:
+        size_hint:1, 0.5
+        Button:
+            text:"ABOUT"
