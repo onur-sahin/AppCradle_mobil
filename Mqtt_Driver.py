@@ -17,6 +17,7 @@ import time
 import paho.mqtt.client as paho
 from paho import mqtt
 
+
 class Mqtt_Driver:
 
     # setting callbacks for different events to see if it works, print the message etc.
@@ -60,12 +61,18 @@ if __name__=="__main__":
 
 
     # subscribe to all topics of encyclopedia by using the wildcard "#"
-    mqtt_driver.client.subscribe("testtopic/#", qos=0)
+    mqtt_driver.client.subscribe("testtopic23/#", qos=0)
 
     # a single publish, this can also be done in loops, etc.
-    mqtt_driver.client.publish("testtopic", payload="deneme", qos=0)
+    # mqtt_driver.client.publish("testtopic23", payload="deneme", qos=0)
 
     # loop_forever for simplicity, here you need to stop the loop manually
     # you can also use loop_start and loop_stop
-    # mqtt.driver.client.loop_start()
-    mqtt_driver.client.loop_forever()
+    # mqtt_driver.client.loop_start()
+    # mqtt_driver.client.loop_forever()
+
+
+
+
+
+
