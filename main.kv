@@ -3,6 +3,7 @@
 #:import HumidityBoxLayout Humidity
 
 MainBoxLayout:
+<MainBoxLayout>:
     id:main_boxlayout
     orientation:"vertical"
 
@@ -98,32 +99,50 @@ MainBoxLayout:
     BoxLayout:
         id:message_box
         size_hint:1, 1.5
+        Label:
+            text:"MESSAGES"
     BoxLayout:
         id:Lullaby
         spacing:0.5
         size_hint:1, 0.5
         Button:
             text:"play\npause"
+            on_press:root.on_press_btn_play()
         Button:
             text:"stop"
+            on_press:root.on_press_btn_stop_music()
         Button:
             text:"replay"
+            on_press:root.on_press_btn_replay()
         Button:
             text:"next"
+            on_press:root.on_press_btn_next()
         Button:
             text:"back"
+            on_press:root.on_press_btn_back()
         Button:
-            text:"load"
-        Button:
+            id:btn_auto_play
             text:"auto\nplay"
+            on_press:root.on_press_btn_auto_play()
     BoxLayout:
         size_hint:1, 0.5
         Image:
             size_hint:0.2, 1
         Slider:
+            id:slider_speed
+            min:25
+            max:100
+            value:root.current_speed
+            on_touch_move: root.on_touch_move_sldr_speed()
         Image:
             size_hint:0.2, 1
         Slider:
+            id:slider_volume
+            min:0
+            max:99.9
+            value:root.current_volume
+            on_touch_move:root.on_touch_move_sldr_volume()
+
 
     BoxLayout:
         id:cradle
@@ -141,9 +160,13 @@ MainBoxLayout:
         id:cradle_auto
         size_hint:1, 0.5
         Button:
+            id:btn_auto_start
             text:"Auto Start"
+            on_press:root.on_press_btn_auto_start()
         Button:
+            id:btn_auto_stop
             text:"Auto Stop"
+            on_press:root.on_press_btn_auto_stop()
 
     BoxLayout:
         size_hint:1, 0.5
@@ -167,3 +190,4 @@ MainBoxLayout:
     # Default the background color for this label
     # to r 0, g 0, b 0, a 0
 # Use the BackgroundLabel any where in your kv code like below
+
