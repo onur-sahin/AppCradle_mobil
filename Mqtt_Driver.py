@@ -13,46 +13,70 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import time
+import threading
+from time import sleep
 import paho.mqtt.client as paho
 from paho import mqtt
 
 
 class Mqtt_Driver:
 
+   
+
+    def __init__(self) -> None:
+
+        # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
+        # userdata is user defined data of any type, updated by user_data_set()
+        # client_id is the given name of the client
+        self.client = paho.Client(client_id="", userdata=None, protocol=paho.MQTTv5)
+        self.client.on_connect = self.on_connect
+        self.client.on_subscribe = self.on_subscribe
+        self.client.on_message = self.on_message
+        self.client.on_publish = self.on_publish
+
+        # enable TLS for secure connection
+        self.client.tls_set(tls_version=mqtt.client.ssl.PROTOCOL_TLS)
+        # set username and password
+        self.client.username_pw_set("ahmedmehmed", "235711Int1")
+        # connect to HiveMQ Cloud on port 8883 (default for MQTT)
+        
+    
+
     # setting callbacks for different events to see if it works, print the message etc.
-    def on_connect(client, userdata, flags, rc, properties=None):
+    def on_connect(self, client, userdata, flags, rc, properties=None):
         print("CONNACK received with code %s." % rc)
 
     # with this callback you can see if your publish was successful
-    def on_publish(client, userdata, mid, properties=None):
+    def on_publish(self, client, userdata, mid, properties=None):
         print("mid: " + str(mid))
 
     # print which topic was subscribed to
-    def on_subscribe(client, userdata, mid, granted_qos, properties=None):
+    def on_subscribe(self, client, userdata, mid, granted_qos, properties=None):
         print("Subscribed: " + str(mid) + " " + str(granted_qos))
 
     # print message, useful for checking if it was successful
-    def on_message(client, userdata, msg):
+    def on_message(self, client, userdata, msg):
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
-    # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
-    # userdata is user defined data of any type, updated by user_data_set()
-    # client_id is the given name of the client
-    client = paho.Client(client_id="", userdata=None, protocol=paho.MQTTv5)
-    client.on_connect = on_connect
 
-    # enable TLS for secure connection
-    client.tls_set(tls_version=mqtt.client.ssl.PROTOCOL_TLS)
-    # set username and password
-    client.username_pw_set("ahmedmehmed", "235711Int1")
-    # connect to HiveMQ Cloud on port 8883 (default for MQTT)
-    client.connect("4304a26c98074e7b9023d1d011705d7d.s1.eu.hivemq.cloud", 8883)
+    
 
-    # setting callbacks, use separate functions like above for better visibility
-    client.on_subscribe = on_subscribe
-    client.on_message = on_message
-    client.on_publish = on_publish
+    
+    def connect(self):
+
+        while True:
+            try:
+                self.client.connect("e78f75ef51644ecda4a26c0c6d5f9b13.s1.eu.hivemq.cloud", 8883)
+                # setting callbacks, use separate functions like above for better visibility
+                
+                print("connected to mqhive server")
+                break
+
+            except BaseException as err:
+                print("can't connect hivemq! Error: ", str(err))
+
+                sleep(5)
+        
 
 
 if __name__=="__main__":
