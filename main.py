@@ -10,13 +10,11 @@ from kivy.uix.image import Image
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
 from kivy.properties import NumericProperty
-from time import sleep
 import threading
 from pygame import mixer
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import cv2
-import imutils
 
 from Camera import CameraDriver
 
@@ -27,7 +25,6 @@ from Tempature import tempature_
 from Humidity import humidity_
 
 import json
-from time import sleep
 
 # test and develope for desktop
 Window.size = (378, 672)
