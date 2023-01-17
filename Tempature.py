@@ -121,8 +121,8 @@ class TempatureBoxLayout(FloatLayout):
             self.warning_label = "NORMAL"
         
         elif (t > 24 and t <= 26):  #WARM     - YELLOW
-            self.progbar.progress_color, self.warning_color = (1, 1, 0, 1), (1, 1, 0, 1)
-            self.warning_label = "WORM"
+            self.progbar.progress_color, self.warning_color = (0.996, 0.945, 0.376, 0.7), (0.996, 0.945, 0.376, 0.7)
+            self.warning_label = "WARM"
             
         elif (t >26 and t <=28 ) :  #HOT      - ORANGE
             self.progbar.progress_color, self.warning_color = (1, 0.645, 0, 1), (1, 0.645, 0, 1)

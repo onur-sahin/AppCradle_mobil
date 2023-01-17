@@ -7,10 +7,16 @@ MainBoxLayout:
 <MainBoxLayout>:
     id:main_boxlayout
     orientation:"vertical"
+    padding: "5 dp"
+    spacing: 3
 
     PageLayout:
         id:air_pages
         size_hint:1, 1.5
+
+        
+            
+                
 
         BoxLayout:
             id:temp
@@ -165,12 +171,21 @@ MainBoxLayout:
     BoxLayout:
         id:cradle_auto
         size_hint:1, 0.5
+        ToggleButton:
+            id: btn_camera
+            text:""
+            on_press: root.on_press_btn_camera()
+            Image:
+                source:"./Images/camera.png"
+                x:btn_camera.pos[0] + (btn_camera.size[0]-self.size[0])*0.5
+                y:btn_camera.pos[1] + (btn_camera.size[1]-self.size[1])*0.5
+                size: (btn_camera.size[0]*0.9, btn_camera.size[1]*0.9)
         Button:
-            id:btn_auto_start
+            id: btn_auto_start
             text:"Auto Start"
             on_press:root.on_press_btn_auto_start()
         Button:
-            id:btn_auto_stop
+            id: btn_auto_stop
             text:"Auto Stop"
             on_press:root.on_press_btn_auto_stop()
 
@@ -204,3 +219,4 @@ MainBoxLayout:
         size_hint_y:None
         height:self.minimum_height
         orientation:'vertical'
+        spacing: "2 dp"
