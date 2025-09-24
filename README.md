@@ -1,2 +1,2 @@
 #AppCradle_mobil
-COMPLETED
+  COMPLETED
