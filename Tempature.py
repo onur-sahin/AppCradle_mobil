@@ -46,12 +46,6 @@ class TempatureBoxLayout(FloatLayout):
         self.add_widget(self.btn)
         self.add_widget(self.progbar)
         
-     
-       
-        
-        
-   
-        
 
         
     def yeni(self, self_button):
